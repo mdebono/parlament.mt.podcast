@@ -1,5 +1,5 @@
 # The Docker image that will be used to build your app
-image: busybox
+image: python:latest
 before_script:
   - python --version  # For debugging
 pages:
