@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+    xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <link>https://parlament.mdebono.com/</link>
+    <title>Il-Podcast tal-Parlament</title>
+    <itunes:image href="https://parlament.mt/static-images/logo_small_menu.png"/>
+    <description>Dan il-Podcast huwa kollezzjoni inuffiċjali tas-seduti tal-Parlament ta' Malta. Għalissa qed inpoġġu l-ewwel seduta ta' Ottubru 2022 u 'l quddiem inżidu seduti hekk kif jinħarġu mill-Parlament.
+    Ċaħda: Dan il-Podcast mhux ikkontrollat mill-Parlament jew il-Gvern ta' Malta u mhu bl-ebda mod jipprova jirrappreżenta l-Parlament.</description>
+    <itunes:owner>
+        <itunes:email>parlament@mdebono.com</itunes:email>
+    </itunes:owner>
+    <itunes:author>Il-Parlament ta' Malta</itunes:author>
+    <itunes:category text="News &amp; Politics"/>
+    <language>mt</language>
+    <item>
+      <title>Plenary Session S14E027</title>
+      <description>Fourtheenth Legislature (2022-) Sitting No.: 027 - Monday, 03-Oct-2022 04:00 PM</description>
+      <enclosure url="https://parlament.mt/Audio/14thLeg/Plenary/Plenary%20027%2003-10-2022%201600hrs.mp3" type="audio/mpeg"/>
+      <itunes:duration>3:29:11</itunes:duration>
+      <pubDate>Mon, 3 Oct 2022 16:00:00 CEST</pubDate>
+    </item>
+  </channel>
+</rss>
