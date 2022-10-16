@@ -1,5 +1,7 @@
 # The Docker image that will be used to build your app
 image: busybox
+before_script:
+  - python --version  # For debugging
 pages:
   stage: deploy
   script:
