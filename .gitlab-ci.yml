@@ -38,11 +38,10 @@ run:
     paths:
       - test.rss
   rules:
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "schedule"
-      when: manual
+    # Run only on schedules on default branch
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "schedule" && $DO_RUN == "true"
 
 pages:
-  stage: deploy
   script:
     - python -m parlament
     - cat test.rss
@@ -53,5 +52,5 @@ pages:
       # The folder that contains the files to be exposed at the Page URL
       - public
   rules:
-    # This ensures that only pushes to the default branch will trigger a pages deploy, and only on schedule
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "schedule"
+    # Deploy pages only on schedules on default branch
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "schedule" && $DO_PAGES == "true"
