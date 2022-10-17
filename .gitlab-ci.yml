@@ -30,6 +30,17 @@ test:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == 'push'
 
+run:
+  script:
+    - python -m parlament
+    - cat test.rss
+  artifacts:
+    paths:
+      - test.rss
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "schedule"
+      when: manual
+
 pages:
   stage: deploy
   script:
@@ -42,6 +53,5 @@ pages:
       # The folder that contains the files to be exposed at the Page URL
       - public
   rules:
-    # This ensures that only pushes to the default branch will trigger
-    # a pages deploy
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+    # This ensures that only pushes to the default branch will trigger a pages deploy, and only on schedule
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "schedule"
