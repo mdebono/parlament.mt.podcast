@@ -59,5 +59,5 @@ def get_episode_description(leg, sitting):
     return text.format(
         leg_title = get_leg_title(leg),
         episode = get_sitting_number(sitting),
-        date = babel.dates.format_datetime(datetime=date, format='full', locale='mt'),
+        date = babel.dates.format_datetime(datetime=date, format='full', locale='mt'), # TODO: remove timezone and add AM/PM
     )
