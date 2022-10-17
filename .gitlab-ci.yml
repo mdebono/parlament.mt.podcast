@@ -35,6 +35,7 @@ pages:
   script:
     - python -m parlament
     - cat test.rss
+    - cp test.rss public/test.txt
     - echo "The site will be deployed to $CI_PAGES_URL"
   artifacts:
     paths:
