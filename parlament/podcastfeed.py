@@ -4,7 +4,6 @@ from feedgenerator import Rss201rev2Feed
 from feedgenerator import force_text, iri_to_uri
 
 class PodcastFeed(Rss201rev2Feed):
-    mime_type = 'application/atom+xml; charset=utf-8'
     ns = "xmlns:itunes"
     ns_url = "http://www.itunes.com/dtds/podcast-1.0.dtd"
 
@@ -33,4 +32,3 @@ class PodcastFeed(Rss201rev2Feed):
             handler.addQuickElement('author', self.feed['author'])
         if self.feed['category'] is not None:
             handler.addQuickElement('category', '', {'text': self.feed['category']})
-

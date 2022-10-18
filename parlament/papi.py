@@ -9,6 +9,7 @@ LEGISLATURE_ID = '506899'
 PARLAMENT_URL = 'https://parlament.mt'
 PARLAMENT_MEDIA_ARCHIVE_URL = PARLAMENT_URL + '/en/menues/reference-material/archives/media-archive/'
 PARLAMENT_MEDIA_ARCHIVE_API_URL = PARLAMENT_URL + '/umbraco/Api/MediaArchiveApi/GetMediaForLegislature/?lang=mt&legislatureId=' + LEGISLATURE_ID
+BABEL_MT_DATETIME_FORMAT = "EEEE, d 'ta''' MMMM yyyy HH:mm a"
 
 def get_leg():
     leg_string = cache.httpPost(PARLAMENT_MEDIA_ARCHIVE_API_URL, None, None).content
@@ -59,5 +60,5 @@ def get_episode_description(leg, sitting):
     return text.format(
         leg_title = get_leg_title(leg),
         episode = get_sitting_number(sitting),
-        date = babel.dates.format_datetime(datetime=date, format='full', locale='mt'), # TODO: remove timezone and add AM/PM
+        date = babel.dates.format_datetime(datetime=date, format=BABEL_MT_DATETIME_FORMAT, locale='mt'),
     )
