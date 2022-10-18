@@ -1,14 +1,56 @@
 # The Docker image that will be used to build your app
-image: busybox
-pages:
-  stage: deploy
+image: python:latest
+
+# Change pip's cache directory to be inside the project directory since we can
+# only cache local items.
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+# Pip's cache doesn't store the python packages
+# https://pip.pypa.io/en/stable/topics/caching/
+#
+# If you want to also cache the installed packages, you have to install
+# them in a virtualenv and cache it as well.
+cache:
+  paths:
+    - .cache/pip
+    - venv/
+
+before_script:
+  - python --version  # For debugging
+  - pip install virtualenv
+  - virtualenv venv
+  - source venv/bin/activate
+  - pip install -r requirements.txt
+
+test:
   script:
+    - python -m unittest discover -s parlament/tests
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == 'push'
+
+run:
+  script:
+    - python -m parlament
+    - cat test.rss
+  artifacts:
+    paths:
+      - test.rss
+  rules:
+    # Run only on schedules on default branch
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "schedule" && $DO_RUN == "true"
+
+pages:
+  script:
+    - python -m parlament
+    - cat test.rss
+    - cp test.rss public/test.txt
     - echo "The site will be deployed to $CI_PAGES_URL"
   artifacts:
     paths:
       # The folder that contains the files to be exposed at the Page URL
       - public
   rules:
-    # This ensures that only pushes to the default branch will trigger
-    # a pages deploy
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+    # Deploy pages only on schedules on default branch
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "schedule" && $DO_PAGES == "true"
