@@ -17,9 +17,9 @@ def get_leg():
 
 def get_leg_title(leg, lang='mt'):
     if lang == 'mt':
-        return leg["TitleMT"]
+        return leg['TitleMT']
     elif lang == 'en':
-        return leg["Title"]
+        return leg['Title']
     else:
         raise Exception('unknown language ' + lang)
 
@@ -27,22 +27,24 @@ def get_leg_number(leg):
     return leg['Number']
 
 def get_plenary_sittings(leg):
-    # TODO: get Sittings of CommitteeType=Plenary
-    return leg["Committees"][0]["Sittings"]
+    return [c for c in leg['Committees'] if c['CommitteeType'] == 'Plenary'][0]['Sittings']
 
 def get_sitting_audio_url(sitting):
-    # TODO: get Url of IsVideo=false
-    return PARLAMENT_URL + sitting["Media"][0]["Url"]
+    audio_url = [m for m in sitting['Media'] if m['IsVideo'] == False]
+    if len(audio_url) == 0:
+        raise Exception('audio not found for sitting ' + get_sitting_number(sitting))
+    else:
+        return PARLAMENT_URL + audio_url[0]['Url']
 
 def get_sitting_title(sitting):
-    return sitting["Title"]
+    return sitting['Title']
 
 def get_sitting_number(sitting):
-    return sitting["Number"]
+    return sitting['Number']
 
 def get_sitting_date(sitting):
     local = pytz.timezone('Europe/Malta')
-    naive = datetime.fromisoformat(sitting["Date"])
+    naive = datetime.fromisoformat(sitting['Date'])
     local_dt = local.localize(naive)
     return local_dt
 
