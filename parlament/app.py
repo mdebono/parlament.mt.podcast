@@ -12,4 +12,4 @@ def run():
             description = papi.get_episode_description(leg, sitting),
             pubdate = papi.get_sitting_date(sitting),
         )
-    pfeed.write_feed(feed, 'test.rss')
+    pfeed.write_feed(feed, 'podcast.rss')

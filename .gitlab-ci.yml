@@ -33,10 +33,9 @@ test:
 run:
   script:
     - python -m parlament
-    - cat test.rss
   artifacts:
     paths:
-      - test.rss
+      - podcast.rss
   rules:
     # Run only on schedules on default branch
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "schedule" && $DO_RUN == "true"
@@ -44,9 +43,7 @@ run:
 pages:
   script:
     - python -m parlament
-    - cat test.rss
-    - cp test.rss public/test.txt
-    - echo "The site will be deployed to $CI_PAGES_URL"
+    - cp podcast.rss public/rss
   artifacts:
     paths:
       # The folder that contains the files to be exposed at the Page URL
