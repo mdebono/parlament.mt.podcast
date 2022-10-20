@@ -7,7 +7,7 @@ def init_feed():
     return PodcastFeed(
         title="Il-Podcast tal-Parlament",
         link="https://parlament.mdebono.com/",
-        description=u"Dan il-Podcast huwa kollezzjoni inuffiċjali tas-seduti tal-Parlament ta' Malta. Għalissa qed inpoġġu l-ewwel seduta ta' Ottubru 2022 u 'l quddiem inżidu seduti hekk kif jinħarġu mill-Parlament. Ċaħda: Dan il-Podcast mhux ikkontrollat mill-Parlament jew il-Gvern ta' Malta u mhu bl-ebda mod jipprova jirrappreżenta l-ebda minnhom.",
+        description=u"Dan il-Podcast huwa kollezzjoni inuffiċjali tas-seduti tal-Parlament ta' Malta. Għalissa qed inpoġġu l-ewwel seduta ta' Ottubru 2022 u 'l quddiem inżidu seduti hekk kif jinħarġu mill-Parlament. Ċaħda: Dan il-Podcast mhux ikkontrollat mill-Parlament jew mill-Gvern ta' Malta u mhu bl-ebda mod jipprova jirrappreżenta l-ebda minnhom.",
         language="mt",
         image_url = "https://parlament.mt/static-images/logo_small_menu.png",
         owner="parlament@mdebono.com",
