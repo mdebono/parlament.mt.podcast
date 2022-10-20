@@ -9,7 +9,7 @@ LEGISLATURE_ID = '506899'
 PARLAMENT_URL = 'https://parlament.mt'
 PARLAMENT_MEDIA_ARCHIVE_URL = PARLAMENT_URL + '/en/menues/reference-material/archives/media-archive/'
 PARLAMENT_MEDIA_ARCHIVE_API_URL = PARLAMENT_URL + '/umbraco/Api/MediaArchiveApi/GetMediaForLegislature/?lang=mt&legislatureId=' + LEGISLATURE_ID
-BABEL_MT_DATETIME_FORMAT = "EEEE, d 'ta''' MMMM yyyy HH:mm a"
+BABEL_MT_DATETIME_FORMAT = "EEEE, d 'ta''' MMMM yyyy HH:mm"
 
 def get_leg():
     leg_string = cache.httpPost(PARLAMENT_MEDIA_ARCHIVE_API_URL, None, None).content
