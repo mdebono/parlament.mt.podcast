@@ -1,10 +1,8 @@
 from parlament import papi, pfeed
 
 def run():
-    #TODO: disabling calling actual URLs for now
     leg = papi.get_leg()
     sittings = papi.get_plenary_sittings(leg)
-    #sitting = sittings[0]
 
     feed = pfeed.init_feed()
     for sitting in sittings:
