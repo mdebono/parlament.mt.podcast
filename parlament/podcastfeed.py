@@ -29,6 +29,6 @@ class PodcastFeed(Rss201rev2Feed):
             handler.addQuickElement('itunes:email', self.feed['owner'])
             handler.endElement('itunes:owner')
         if self.feed['author'] is not None:
-            handler.addQuickElement('author', self.feed['author'])
+            handler.addQuickElement('itunes:author', self.feed['author'])
         if self.feed['category'] is not None:
-            handler.addQuickElement('category', '', {'text': self.feed['category']})
+            handler.addQuickElement('itunes:category', '', {'text': self.feed['category']})
