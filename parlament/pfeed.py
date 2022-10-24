@@ -3,6 +3,10 @@
 from parlament.podcastfeed import PodcastFeed
 from feedgenerator import Enclosure
 
+from lxml import etree
+
+UTF8 = 'utf8'
+
 def init_feed():
     return PodcastFeed(
         title="Il-Podcast tal-Parlament",
@@ -26,5 +30,8 @@ def add_item(feed, title, description, link, audio_url, duration=None, pubdate=N
     )
 
 def write_feed(feed, filename):
-    with open(filename, 'w', encoding='utf-8') as fp:
-        feed.write(fp, 'utf-8')
+    tmp_filename = filename + '.tmp'
+    with open(tmp_filename, 'w', encoding=UTF8) as fp:
+        feed.write(fp, UTF8)
+    tree = etree.parse(tmp_filename)
+    tree.write(filename, encoding=UTF8, pretty_print=True)
