@@ -36,6 +36,9 @@ def get_sitting_audio_url(sitting):
     else:
         return PARLAMENT_URL + audio_url[0]['Url']
 
+def get_sitting_url(sitting):
+    return PARLAMENT_URL + sitting['Url']
+
 def get_sitting_title(sitting):
     return sitting['Title']
 

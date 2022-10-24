@@ -15,12 +15,12 @@ def init_feed():
         category="News & Politics",
     )
 
-def add_item(feed, title, description, url, duration=None, pubdate=None):
+def add_item(feed, title, description, link, audio_url, duration=None, pubdate=None):
     feed.add_item(
         title=title,
-        link='',
         description=description,
-        enclosure=Enclosure(url=url, length='', mime_type="audio/mpeg"),
+        link=link,
+        enclosure=Enclosure(url=audio_url, length='', mime_type="audio/mpeg"),
         duration=duration,
         pubdate=pubdate,
     )
