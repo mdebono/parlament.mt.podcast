@@ -13,7 +13,7 @@ def init_feed():
         link="https://parlament.mdebono.com/",
         description="Dan il-Podcast huwa ġabra inuffiċjali tas-seduti tal-Parlament ta' Malta. Is-seduti jiġu ppublikati hawn il-ġurnata ta' wara li jseħħu. Għal aktar informazzjoni, żur is-sit ta' dan il-podcast.",
         language="mt",
-        image_url = "https://parlament.mdebono.com/parlament-logo.jpg",
+        image_url = "https://parlament.mdebono.com/img/parlament-logo.jpg",
         owner="parlament@mdebono.com",
         author="Il-Parlament ta' Malta",
         category="News & Politics",
